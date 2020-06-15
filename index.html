@@ -22,19 +22,76 @@
         <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
 
     </head>
-    <body>
+    <body background="Background.jpg">
         <!-- <h1>Hello, world!</h1> --><br>
-        <form class="form-inline">
-            <div class="form-group mb-2">
-                <label for="lblNave" class="sr-only">Nave:</label>
-                <input type="text" class="form-control" id="lblNave" readonly value="Nombre de la Nave">
+        <form>
+            <div class="form-row">
+              <div class="form-group col-md-5">:
+                <labe for="nomNave" style="color: aliceblue;"><b>Nombre de la Nave:</b></label>
+                <input type="text" class="form-control" id="nomNave" placeholder="Ejemplo: Nave 1">
+              </div>
+              <div class="form-group col-md-5">
+                <label for="nomcul" style="color: aliceblue;"><b>Cultivo:</b></label>
+                <input type="text" class="form-control" id="nomcul" placeholder="Ejemplo: Tomate">
+              </div>
             </div>
-            <div class="form-gorup mx-sm-3 mb-2">
-                <label for="nomNave" class="sr-only">Nombre de la Nave</label>
-                <input type="text" class="form-control" id="nomNave" placeholder="Nombre">
+            <div class="form-group col-md-5">
+              <label for="clima" style="color: aliceblue;"><b>Clima:</b></label>
+              <input type="text" class="form-control" id="clima" placeholder="Ejemplo: Templado">
             </div>
-            <button type="button" class="btn btn-primary mb-2" onclick="crearNave()">Crear Nave</button>
-        </form>
+            <div class="form-row">
+              <div class="form-group col-md-5">
+                <label for="nomCiudad" style="color: aliceblue;"><b>Ciudad:</b></label>
+                <input type="text" class="form-control" id="nomCiudad" placeholder="Ejemplo: Comala">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="nomEstado" style="color: aliceblue;"><b>Estado</b></label>
+                <select id="nomEstado" class="form-control">
+                  <option selected>Elige tu estado...</option>
+                  <option>Aguascalientes</option>
+                  <option>Baja California</option>
+                  <option>Baja California Sur</option>
+                  <option>Campeche</option>
+                  <option>Coahuila de Zaragoza</option>
+                  <option>Colima  </option>
+                  <option>Chiapas  </option>
+                  <option>Chihuahua </option>
+                  <option>Distrito Federal  </option>
+                  <option>Durango  </option>
+                  <option>Guanajuato </option>
+                  <option>Guerrero</option>
+                  <option>Hidalgo</option>
+                  <option>Jalisco </option>
+                  <option>México </option>
+                  <option>Michoacán de Ocampo  </option>
+                  <option>Morelos</option>
+                  <option>Nayarit</option>
+                  <option>Nuevo León </option>
+                  <option>Oaxaca</option>
+                  <option>Puebla </option>
+                  <option>Querétaro</option>
+                  <option>Quintana Roo</option>
+                  <option>San Luis Potosí</option>
+                  <option>Sinaloa</option>
+                  <option>Sonora</option>
+                  <option>Tabasco</option>
+                  <option>Tamaulipas</option>
+                  <option>Tlaxcala</option>
+                  <option>Veracruz de Ignacio de la Llave</option>
+                  <option>Yucatán</option>
+                  <option>Zacatecas</option>
+                </select>
+              </div>
+              <div class="form-group col-md-2">
+                <label for="fecha" style="color: aliceblue;"><b>Fecha de creacion:</b></label>
+                <input type="date" class="form-control" id="fecha">
+              </div>
+              </div>
+              <div class="form-group">
+                
+              </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+          </form>
 
         <script src="app.js"></script>
         <!-- Optional JavaScript -->
