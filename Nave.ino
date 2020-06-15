@@ -14,7 +14,7 @@ Ticker tiempo_1;
 #define DHTTYPE DHT11   // DHT 11 Dht22...
 #define DHTPIN 2 
 
-String path = "/Nave1";
+String path = "/Nave 1";
 //Define un objeto de Firebase
 FirebaseData firebaseData;
 
@@ -56,13 +56,21 @@ void setup()
 }
 
 void loop()
-{
-  //Leer humedad
-  float h = dht.readHumidity();
-  float t = dht.readTemperature();
-  if (Firebase.setFloat(firebaseData, path + "/Sensores/Humedad", h)){InforSetLuzSensor();}else{CausaError(h, "humedad");} 
-  if (Firebase.setFloat(firebaseData, path + "/Sensores/Temperatura", t)){InforSetLuzSensor();}else{CausaError(t, "temperatura");} 
-  delay(5000);
+{ 
+  if(Firebase.get(firebaseData, path)){
+    Serial.println();
+    Serial.print("Hay nave");
+    //Leer humedad
+    float h = dht.readHumidity();
+    float t = dht.readTemperature();
+    if (Firebase.setFloat(firebaseData, path + "/Sensores/Humedad", h)){InforSetLuzSensor();}else{CausaError(h, "humedad");} 
+    if (Firebase.setFloat(firebaseData, path + "/Sensores/Temperatura", t)){InforSetLuzSensor();}else{CausaError(t, "temperatura");} 
+    delay(5000);   
+  }else{
+    Serial.println();
+    Serial.print("no hay nave");
+  }
+       
 }
 
 void InforGetLuzSensor(void)
@@ -115,4 +123,3 @@ void printResult(FirebaseData &data)
     else if (data.dataType() == "string")
         Serial.println(data.stringData());
 }
-

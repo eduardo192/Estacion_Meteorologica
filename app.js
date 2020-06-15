@@ -42,6 +42,8 @@ starCountRef.on('value', function(snapshot) {
     tabla.innerHTML = '';
     const d = snapshot.val();
     //console.log(d);
+    console.log(d);
+    
     for (const key in d) {
         
         console.log(d[key]);
@@ -53,6 +55,8 @@ starCountRef.on('value', function(snapshot) {
             <td>${d[key].Ciudad}</td>
             <td>${d[key].Estado}</td>
             <td>${d[key].Fecha}</td>
+            <td>${d[key].Sensores.Temperatura}</td>
+            <td>${d[key].Sensores.Humedad}</td>
             <td><button class="btn btn-danger" onclick="borrar('${key}')">Eliminar</button></td>
             <td><button class="btn btn-warning" onclick="editar('${key}','${d[key].Cultivo}', '${d[key].Clima}', '${d[key].Ciudad}', '${d[key].Estado}', '${d[key].Fecha}')">Editar</button></td>
         </tr>`;
