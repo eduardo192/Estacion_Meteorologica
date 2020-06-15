@@ -82,7 +82,7 @@
                   <option>Yucatán</option>
                   <option>Zacatecas</option>
                 </select>
-              </div>
+            </div>
               <div class="form-group col-md-2">
                 <label for="fecha" style="color: aliceblue;"><b>Fecha de creacion:</b></label>
                 <input type="date" class="form-control" id="fecha">
@@ -91,9 +91,26 @@
               <div class="form-group">
                 
               </div>
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <button type="submit" class="btn btn-primary" id="btnAgregar" onclick="crearNave()">Sign in</button>
           </form>
-
+          <br>
+          <br>
+          <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">Nombre de Nave</th>
+                <th scope="col">Cultivo</th>
+                <th scope="col">Clima</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Fecha de cracion</th>
+              </tr>
+            </thead>
+            <tbody id="tabla">
+              
+            </tbody>
+          </table>
+        
         <script src="app.js"></script>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
