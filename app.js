@@ -11,7 +11,7 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.database(); 
 console.log(db)
 
-
+let Creada = false;
 
 //AGREGAR
 function crearNave(){
@@ -33,6 +33,7 @@ function crearNave(){
         Fecha: fecha
     };
     db.ref(nomNave).set(datos);
+    Creada = true
 
 }
 
@@ -42,24 +43,27 @@ starCountRef.on('value', function(snapshot) {
     tabla.innerHTML = '';
     const d = snapshot.val();
     //console.log(d);
-    console.log(d);
+
     
     for (const key in d) {
+        console.log(key);
+        console.log(d[key]);    
+        if(d[key].Cultivo != undefined || d[key].Clima != undefined || d[key].Ciudad != undefined ){
+            tabla.innerHTML += 
+            `<tr>
+                <th scope="row">${key}</th>
+                <td>${d[key].Cultivo}</td>
+                <td>${d[key].Clima}</td>
+                <td>${d[key].Ciudad}</td>
+                <td>${d[key].Estado}</td>
+                <td>${d[key].Fecha}</td>
+                <td>${d[key].Sensores.Temperatura}</td>
+                <td>${d[key].Sensores.Humedad}</td>
+                <td><button class="btn btn-danger" onclick="borrar('${key}')">Eliminar</button></td>
+                <td><button class="btn btn-warning" onclick="editar('${key}','${d[key].Cultivo}', '${d[key].Clima}', '${d[key].Ciudad}', '${d[key].Estado}', '${d[key].Fecha}')">Editar</button></td>
+            </tr>`;
+        }     
         
-        console.log(d[key]);
-        tabla.innerHTML += 
-        `<tr>
-            <th scope="row">${key}</th>
-            <td>${d[key].Cultivo}</td>
-            <td>${d[key].Clima}</td>
-            <td>${d[key].Ciudad}</td>
-            <td>${d[key].Estado}</td>
-            <td>${d[key].Fecha}</td>
-            <td>${d[key].Sensores.Temperatura}</td>
-            <td>${d[key].Sensores.Humedad}</td>
-            <td><button class="btn btn-danger" onclick="borrar('${key}')">Eliminar</button></td>
-            <td><button class="btn btn-warning" onclick="editar('${key}','${d[key].Cultivo}', '${d[key].Clima}', '${d[key].Ciudad}', '${d[key].Estado}', '${d[key].Fecha}')">Editar</button></td>
-        </tr>`;
     }
 });
 

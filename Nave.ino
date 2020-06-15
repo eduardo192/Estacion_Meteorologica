@@ -57,7 +57,7 @@ void setup()
 
 void loop()
 { 
-  if(Firebase.get(firebaseData, path)){
+  if(Firebase.get(firebaseData, path + "/Nave 1")){
     Serial.println();
     Serial.print("Hay nave");
     //Leer humedad
