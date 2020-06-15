@@ -11,7 +11,7 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.database(); 
 console.log(db)
 
-obtenerDatos();
+
 
 //AGREGAR
 function crearNave(){
@@ -36,33 +36,28 @@ function crearNave(){
 
 }
 
-
-
-function obtenerDatos(){
-    const tabla = document.getElementById('tabla');
-    let starCountRef = db.ref()
-    starCountRef.on('value', function(snapshot) {
-        tabla.innerHTML = '';
-        const d = snapshot.val();
-        //console.log(d);
-        for (const key in d) {
-            
-            console.log(d[key]);
-            tabla.innerHTML += 
-            `<tr>
-                <th scope="row">${key}</th>
-                <td>${d[key].Cultivo}</td>
-                <td>${d[key].Clima}</td>
-                <td>${d[key].Ciudad}</td>
-                <td>${d[key].Estado}</td>
-                <td>${d[key].Fecha}</td>
-                <td><button class="btn btn-danger" onclick="borrar('${key}')">Borrar</button></td>
-                <td><button class="btn btn-warning" onclick="editar('${key}','${d[key].Cultivo}', '${d[key].Clima}', '${d[key].Ciudad}', '${d[key].Estado}', '${d[key].Fecha}')">Editar</button></td>
-            </tr>`;
-        }
-    });
-    
-}
+const tabla = document.getElementById('tabla');
+let starCountRef = db.ref()
+starCountRef.on('value', function(snapshot) {
+    tabla.innerHTML = '';
+    const d = snapshot.val();
+    //console.log(d);
+    for (const key in d) {
+        
+        console.log(d[key]);
+        tabla.innerHTML += 
+        `<tr>
+            <th scope="row">${key}</th>
+            <td>${d[key].Cultivo}</td>
+            <td>${d[key].Clima}</td>
+            <td>${d[key].Ciudad}</td>
+            <td>${d[key].Estado}</td>
+            <td>${d[key].Fecha}</td>
+            <td><button class="btn btn-danger" onclick="borrar('${key}')">Eliminar</button></td>
+            <td><button class="btn btn-warning" onclick="editar('${key}','${d[key].Cultivo}', '${d[key].Clima}', '${d[key].Ciudad}', '${d[key].Estado}', '${d[key].Fecha}')">Editar</button></td>
+        </tr>`;
+    }
+});
 
 function borrar(key) {console.log('borrar: ' + key);
     db.ref(key).remove();
